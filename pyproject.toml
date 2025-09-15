@@ -5,9 +5,10 @@ description = ""
 authors = ["anemoneruri <example@example.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.11"
+python = "3.11.*"
 py-cord = "*"
 feedparser = ">=6.0.12"
+
 
 [build-system]
 requires = ["poetry-core"]
