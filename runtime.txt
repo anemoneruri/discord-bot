@@ -1,3 +1,5 @@
-pyenv global 3.11.8 && poetry install --no-root
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+
 
 
