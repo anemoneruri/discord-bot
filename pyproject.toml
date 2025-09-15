@@ -9,7 +9,6 @@ python = "3.11.9"
 py-cord = "*"
 feedparser = ">=6.0.12"
 
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
