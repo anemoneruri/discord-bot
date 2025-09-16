@@ -1,4 +1,28 @@
 import discord
+from discord.ext import commands
+import os
+import asyncio
+TOKEN = "ここにトークン"
+
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+# ここに on_ready を追加
+@bot.event
+async def on_ready():
+    print(f'ログインしました: {bot.user}')
+    await bot.change_presence(
+        status=discord.Status.online,
+        activity=discord.Game("お手伝い中！")
+    )
+
+# コマンドやイベントの定義いろいろ...
+
+
+
+
+import discord
 from discord import app_commands
 from discord.ext import commands
 import os
@@ -25,7 +49,9 @@ async def on_ready():
     except Exception as e:
         print(f"Error syncing commands: {e}")
     print(f"ログインしました: {bot.user}")
-
+await bot.change_presence(
+        status=discord.Status.online,
+        activity=discord.Game("お手伝い中！")
 @bot.tree.command(name="event", description="イベント情報を投稿します")
 @app_commands.describe(
     name="イベント名",
