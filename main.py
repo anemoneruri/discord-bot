@@ -26,7 +26,6 @@ async def on_ready():
         print(f"Error syncing commands: {e}")
     print(f"ログインしました: {bot.user}")
 
-# /event コマンドの追加
 @bot.tree.command(name="event", description="イベント情報を投稿します")
 @app_commands.describe(
     name="イベント名",
@@ -35,15 +34,20 @@ async def on_ready():
     image_url="イベント画像URL"
 )
 async def event(interaction: discord.Interaction, name: str, period: str, condition: str, image_url: str = None):
+    # まず必ず最初の応答を返す
+    await interaction.response.defer()
+
     embed = discord.Embed(
         title=name,
-        description=f"📅 期間: {period}\n📝 条件: {condition}",
+        description=f"📅 期間: {period}\n✅ 条件: {condition}",
         color=0x1abc9c
     )
     if image_url:
         embed.set_image(url=image_url)
 
-    await interaction.response.send_message(embed=embed)
+    # 最初の応答を defer したので followup で返す
+    await interaction.followup.send(embed=embed)
+
 
 # /gacha コマンドの追加
 @bot.tree.command(name="gacha", description="ガチャ情報を投稿します")
