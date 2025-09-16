@@ -2,41 +2,20 @@ import discord
 from discord.ext import commands
 import os
 import asyncio
-TOKEN = "ここにトークン"
+
 
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 # ここに on_ready を追加
-@bot.event
-async def on_ready():
-    print(f'ログインしました: {bot.user}')
-    await bot.change_presence(
-        status=discord.Status.online,
-        activity=discord.Game("お手伝い中！")
-    )
 
 # コマンドやイベントの定義いろいろ...
 
-
-
-
-import discord
-from discord import app_commands
-from discord.ext import commands
-import os
-import asyncio
 from datetime import datetime
 import feedparser
 
 TOKEN = os.environ["TOKEN"]
-
-# 募集を管理する辞書 {ユーザーID: メッセージID}
-active_recruits = {}
-
-# 募集専用チャンネルID（Discordで右クリック→IDをコピー）
-RECRUIT_CHANNEL_ID = 1416484401058938880  
 
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="!", intents=intents)
